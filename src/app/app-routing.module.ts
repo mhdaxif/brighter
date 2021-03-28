@@ -8,8 +8,8 @@ const routes: Routes = [
   
   {
     path: 'mock-data', 
-    loadChildren: () => import('./modules/json-placeholder/json-placeholder.module').then(
-      (m) => m.JsonPlaceholderModule
+    loadChildren: () => import('./modules/posts/posts.module').then(
+      (m) => m.PostModule
     ),
   }
 ]
