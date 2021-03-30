@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './core/gaurds/auth.guard';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
 
-import { P404Component } from './modules/error/404.component';
-import { P500Component } from './modules/error/500.component';
-import { LoginComponent } from './modules/login/login.component';
-import { RegisterComponent } from './modules/register/register.component';
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
@@ -53,41 +52,35 @@ export const routes: Routes = [
     children: [
       {
         path: 'base',
-        loadChildren: () => import('./modules/base/base.module').then(m => m.BaseModule)
+        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
       {
         path: 'buttons',
-        loadChildren: () => import('./modules/buttons/buttons.module').then(m => m.ButtonsModule)
+        loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
       },
       {
         path: 'charts',
-        loadChildren: () => import('./modules/chartjs/chartjs.module').then(m => m.ChartJSModule)
+        loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
       },
       {
         path: 'dashboard',
-        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'icons',
-        loadChildren: () => import('./modules/icons/icons.module').then(m => m.IconsModule)
+        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
       },
       {
         path: 'notifications',
-        loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule)
+        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
         path: 'theme',
-        loadChildren: () => import('./modules/theme/theme.module').then(m => m.ThemeModule)
+        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {
         path: 'widgets',
-        loadChildren: () => import('./modules/widgets/widgets.module').then(m => m.WidgetsModule)
-      },
-      {
-        path: 'mock-data', 
-        loadChildren: () => import('./modules/posts/posts.module').then(
-          (m) => m.PostModule
-        ),
+        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
       }
     ]
   },
